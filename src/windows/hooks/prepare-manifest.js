@@ -7,8 +7,7 @@ module.exports = function(context) {
 
     var MANIFEST_WINDOWS    = 'package.windows.appxmanifest',
         MANIFEST_PHONE      = 'package.phone.appxmanifest',
-        MANIFEST_WINDOWS10  = 'package.windows10.appxmanifest',
-        MANIFEST_WINDOWS80  = 'package.windows80.appxmanifest';
+        MANIFEST_WINDOWS10  = 'package.windows10.appxmanifest';
 
     function updateManifestFile(manifestPath) {
         var doc = xml.parseElementtreeSync(manifestPath);
@@ -23,7 +22,7 @@ module.exports = function(context) {
         fs.writeFileSync(manifestPath, doc.write({indent: 4}), 'utf-8');
     }
 
-    [MANIFEST_PHONE, MANIFEST_WINDOWS80, MANIFEST_WINDOWS, MANIFEST_WINDOWS10]
+    [MANIFEST_PHONE, MANIFEST_WINDOWS, MANIFEST_WINDOWS10]
     .forEach(function(manifestFile) {
         updateManifestFile(path.join(projectRoot, manifestFile));
     });

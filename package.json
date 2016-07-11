@@ -7,7 +7,6 @@
     "platforms": [
       "ios",
       "android",
-      "windows8",
       "windows"
     ]
   },
@@ -25,8 +24,7 @@
     "ecosystem:cordova",
     "cordova-ios",
     "cordova-android",
-    "cordova-windows",
-    "cordova-windows8"
+    "cordova-windows"
   ],
   "engines": [
     {
