@@ -1,7 +1,7 @@
 module.exports = function(context) {
-    var fs = context.requireCordovaModule('fs'),
-        et = context.requireCordovaModule('elementtree'),
-        path = context.requireCordovaModule('path'),
+    var fs = require('fs'),
+        et = require('elementtree'),
+        path = require('path'),
         xml= context.requireCordovaModule('cordova-common').xmlHelpers,
         projectRoot = path.join(context.opts.projectRoot, "platforms", "windows");
 
@@ -10,6 +10,10 @@ module.exports = function(context) {
         MANIFEST_WINDOWS10  = 'package.windows10.appxmanifest';
 
     function updateManifestFile(manifestPath) {
+        if (!fs.existsSync(manifestPath)) {
+            return;
+        }
+
         var doc = xml.parseElementtreeSync(manifestPath);
         var root = doc.getroot();
         var app = root.find('./Applications/Application');
